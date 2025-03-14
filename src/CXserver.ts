@@ -12,7 +12,7 @@ import _loggerUtil from './utils/CXlogger.utils';
 dotenv.config();
 
 // * web routes
-// import webAuthenticationRoutes from './routes/CXauthentication.routes';
+import webAuthenticationRoutes from './routes/CXauthentication.routes';
 import webMediaRoutes from './routes/CXmedia.routes';
 
 // * destructure constants
@@ -58,7 +58,8 @@ class AppServer {
         // * allowed origins
         this.allowedOrigins = [
             LIVE_SERVER || emptyValue,
-            LOCAL_VM_1 || emptyValue
+            LOCAL_VM_1 || emptyValue,
+            'http://localhost:3000'
         ];
 
         // * initialize middlewares
@@ -82,7 +83,7 @@ class AppServer {
 
     // * initialize routes
     private initializeRoutes(): void {
-        // this.app.use(this.webApiPrefix + this.version + AUTHENTICATION, webAuthenticationRoutes);
+        this.app.use(this.webApiPrefix + this.version + AUTHENTICATION, webAuthenticationRoutes);
         this.app.use(this.webApiPrefix + this.version + MEDIA, webMediaRoutes);
 
         // * health check route

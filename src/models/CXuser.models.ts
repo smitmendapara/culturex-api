@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         required: trueValue
     },
     email: {
-        type: Number,
+        type: String,
         required: trueValue
     }
 }, {

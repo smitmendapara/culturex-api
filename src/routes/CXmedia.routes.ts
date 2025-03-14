@@ -15,12 +15,12 @@ import { authenticate } from '../middleware/CXauth.middleware';
 
 // * [GET] all media
 router.get('/all-media', 
-    // authenticate as any,
+    authenticate as any,
     allMedia);
 
 // * [POST] upload media
 router.post('/upload-media', 
-    // authenticate as any,
+    authenticate as any,
     upload.single('file'),
     validateFileUpload as any,
     uploadMedia);

@@ -28,11 +28,8 @@ const STATUS_400 = 400
 const STATUS_401 = 401
 const STATUS_403 = 403
 
-const DEFAULT_IMAGES_DIR = 'public/images'
-
 const APP = 'app'
 const MIDDLEWARE = 'middleware'
-const API = 'api'
 const AUTH = 'auth'
 const SERVICE = 'service'
 const AUTHENTICATION = 'authentication'
@@ -41,7 +38,6 @@ const S3 = 's3'
 const MEDIA = 'media'
 const COMMON = 'common'
 const UTIL = 'util'
-const SECURE = 'secure'
 
 const EX_ONE_MINUTE = 60
 const PATH_SEPARATOR = '/'
@@ -83,11 +79,8 @@ export default {
     STATUS_401,
     STATUS_403,
 
-    DEFAULT_IMAGES_DIR,
-
     APP,
     MIDDLEWARE,
-    API,
     AUTH,
     SERVICE,
     AUTHENTICATION,
@@ -96,7 +89,6 @@ export default {
     MEDIA,
     COMMON,
     UTIL,
-    SECURE,
 
     EX_ONE_MINUTE,
     PATH_SEPARATOR,

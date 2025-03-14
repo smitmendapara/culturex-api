@@ -7,8 +7,8 @@ const {
 
 const mediaSchema = new mongoose.Schema({
 
-    user_id: {
-        type: mongoose.Types.ObjectId,
+    google_id: {
+        type: String,
         required: trueValue
     },
     file: {

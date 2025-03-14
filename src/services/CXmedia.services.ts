@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 
 // * models & services
@@ -23,7 +22,10 @@ const {
 
 export const allMediaService = async (req: Request, res: Response) => {
     try {
-        const allMedia = await Media.find({}, {
+        const { id } = req.user;
+
+        // * all media of user
+        const allMedia = await Media.find({ google_id: id }, {
             __v: excludeField
         })
 
@@ -37,7 +39,10 @@ export const allMediaService = async (req: Request, res: Response) => {
 
 export const uploadMediaService = async (req: Request, res: Response) => {
     try {
+        const { id } = req.user;
         const attachment = req.file;
+
+        console.log('call api...')
 
         // * validate attachment
         if (!attachment) {
@@ -57,7 +62,7 @@ export const uploadMediaService = async (req: Request, res: Response) => {
 
         // * create media
         const mediaCreated = await Media.create({
-            user_id: new mongoose.Types.ObjectId(),
+            google_id: id,
             file: uploadedMedia.key,
             file_type: attachment.mimetype,
             size: attachment.size

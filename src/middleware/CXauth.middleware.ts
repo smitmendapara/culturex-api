@@ -12,8 +12,6 @@ const {
     ACCESS_DENIED,
     UNAUTHORIZED_USER, 
     MIDDLEWARE,
-    THREE,
-    PATH_SEPARATOR,
     EMPTY_STRING: emptyValue
 } = _constantUtil;
 
@@ -32,10 +30,8 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
         // * decode token and verify admin
         jwt.verify(token, verifyTokenKey, (error, decode: any) => {
-            const hasPermission = decode?.permission && decode.permission.includes(PATH_SEPARATOR + req.baseUrl.split(PATH_SEPARATOR)[THREE]);
-
             // * validate permission
-            if (error || !hasPermission) {
+            if (error) {
                 return viewJSONResponse(res, falseValue, STATUS_403, UNAUTHORIZED_USER, {});
             }
 
